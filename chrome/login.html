@@ -1,0 +1,45 @@
+<html><head>
+	<script src="js/jquery.js"></script>
+	<style>
+		#login-box {
+			margin-top: -10px;
+			text-align: center;
+		}
+		input {
+			width: 100%;
+			padding: 10px 10px;
+			margin: 5px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			background-color: #ffffff;
+			transition: border 0.2s, background-color 0.2s;
+		}
+		.dataText:hover {
+			border: 1px solid #777;
+			background-color: #f7f2f2;
+		}
+		.loginBtn {
+			color: #ffffff;
+			background-color: #660000;
+			margin-top: -42px;
+		}
+		.loginBtn:hover {
+			background-color: #751919;
+			border: 1px solid #777;
+		}
+	</style>
+</head><body>
+	<img src="img/login_header.png" /><br /><br />
+	<div class="login-box" id="login-box">
+		<form>
+			<input id="user" name="user" type="text" class="dataText" placeholder="Username">
+			<input id="pass" name="pass" type="password" class="dataText" placeholder="Password">
+			<img src='img/load.gif' width='25px' style="margin-top: 10px; margin-bottom: 12px;"/>
+			<input value="Login" id="login" name="login" type="button" class="loginBtn">
+			
+			<p class="status"></p>
+		</form>
+	</div>
+	<script src="js/login.js"></script>
+</body></html>

@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "STTS College Helper",
+  "description": "An extension to help STTS students accessing information systems.",
+  "version": "0.1.53",
+  "author": "Smankusors (Antony Kurniawan)",
+  "homepage_url": "http://sim.stts.edu",
+  "icons": {
+    "16" : "img/icon_16.png",
+    "24" : "img/icon_24.png",
+    "32" : "img/icon2_32.png",
+    "64" : "img/icon2_64.png",
+    "128" : "img/icon2_128.png",
+    "256" : "img/icon2_256.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16" : "img/icon_16.png",
+      "24" : "img/icon_24.png",
+      "32" : "img/icon2_32.png",
+      "64" : "img/icon2_64.png",
+      "128" : "img/icon2_128.png",
+      "256" : "img/icon2_256.png"
+	},
+    "default_popup": "redir.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://sim.stts.edu/index.php","http://sim.stts.edu/"],
+      "js": ["js/jquery.js","js/checkLogin.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["js/jquery.js","js/checkNews.js"],
+	"persistent": false
+  },
+  "permissions": [
+    "activeTab",
+	"storage",
+	"alarms",
+	"http://sim.stts.edu/"
+  ]
+}

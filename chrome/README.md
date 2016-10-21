@@ -1,4 +1,3 @@
 #STTSHelper - Chrome Extension
 
-Cara install :
--COMING SOON- titik dua v
+Install dari https://chrome.google.com/webstore/detail/istts-helper/jejloeeaabcdgecaoinphjiopnkkjica

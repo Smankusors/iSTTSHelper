@@ -1,9 +1,3 @@
-console.log("MENU UTAMA");
-
-chrome.storage.local.get('news', function(data) {
-	if (data.news) $("#content").html(data.news);
-});
-
 $('#logout').click(function (){
 	console.log("logouut");
 	chrome.storage.local.set({'loggedOn' : false});
@@ -24,14 +18,16 @@ $("#mNewsSIM").click(function() {
 			$("#content").fadeIn(100);
 		});
 		$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
-			var parsed = parsePengumumanSIM(result);
-			$("#content").html(parsed);
-			chrome.storage.local.set({'newsSIM' : parsed});
-			console.log("SIM NEWS updated!");
-			$(".link-pengumuman").click(function(){
-				var pdfLink = this.href;
-				window.open(pdfLink,'_blank');
-			});
+			if ($('#mNewsSIM').attr('class') == "selected") {
+				var parsed = parsePengumumanSIM(result);
+				$("#content").html(parsed);
+				chrome.storage.local.set({'newsSIM' : parsed});
+				console.log("SIM NEWS updated!");
+				$(".link-pengumuman").click(function(){
+					var pdfLink = this.href;
+					window.open(pdfLink,'_blank');
+				});
+			}
 		});
 	},100);
 });
@@ -47,11 +43,13 @@ $("#mNewsLab").click(function() {
 			$("#content").fadeIn(100);
 		});
 		$.get("http://lkomp.stts.edu", function(result) {
-			var parsed = parsePengumumanLab(result);
-			$("#content").html(parsed);
-			chrome.storage.local.set({'newsLab' : parsed});
-			console.log("Lab NEWS updated!");
-			$("#content").fadeIn(100);
+			if ($('#mNewsLab').attr('class') == "selected") {
+				var parsed = parsePengumumanLab(result);
+				$("#content").html(parsed);
+				chrome.storage.local.set({'newsLab' : parsed});
+				console.log("Lab NEWS updated!");
+				$("#content").fadeIn(100);
+			}
 		});
 	},100);
 });
@@ -66,17 +64,17 @@ $("#mSched").click(function() {
 			if (data.sched) $("#content").html(data.sched);
 			$("#content").fadeIn(100);
 		});
-		$.get("http://sim.stts.edu/jadwal_kul.php", function(result) {
-			$("#content").html(parseJadwalKul(result));
-			$.get( "http://sim.stts.edu/jadwal_ujian.php", function(result){
-				$("#content").append(parseJadwalUjian(result));
-				$.get( "http://sim.stts.edu/jadwal_prakecc.php", function(result){
-					$("#content").append(parseJadwalPrakECC(result));
-					chrome.storage.local.set({'sched' : $("#content").html()});
-					console.log("SCHED updated!");
-					
+		$.get("http://sim.stts.edu/jadwal_kul.php", function(jadwal_kul) {
+			$.get( "http://sim.stts.edu/jadwal_ujian.php", function(jadwal_ujian){
+				$.get( "http://sim.stts.edu/jadwal_prakecc.php", function(jadwal_prakecc){
+					if ($('#mSched').attr('class') == "selected") {
+						$("#content").html(parseJadwalKul(jadwal_kul));
+						$("#content").append(parseJadwalUjian(jadwal_ujian));
+						$("#content").append(parseJadwalPrakECC(jadwal_prakecc));
+						chrome.storage.local.set({'sched' : $("#content").html()});
+						console.log("SCHED updated!");
+					}
 				});
-				
 			});
 		});
 	}, 100);
@@ -97,12 +95,12 @@ $("#mAbout").click(function() {
 });
 
 var userID, password;
+chrome.storage.local.get('news', function(data) {
+	if (data.news) $("#content").html(data.news);
+});
 $.get( "http://sim.stts.edu/index.php", function(data){
 	if (data.includes("Selamat Datang,")) {
-		var re = /([\s\S]*)ang, (.*) \<inp.*([\s\S]*)/;
-		var fullName = data.replace(re,"$2");
-		var abbName = fullName.replace(/ ([A-Z])\w+/g,' $1.');
-		$("#nama").html(abbName);
+		$("#nama").html(parseNama(data));
 		$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
 			var parsed = parsePengumumanSIM(result);
 			$("#content").html(parsed);
@@ -123,5 +121,4 @@ $.get( "http://sim.stts.edu/index.php", function(data){
 			});
 		});
 	}
-	
 });

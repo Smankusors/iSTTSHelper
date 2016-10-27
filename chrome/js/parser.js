@@ -1,3 +1,9 @@
+function parseNama(s) {
+	var nama = s.replace(/([\s\S]*)ang, (.*) \<inp.*([\s\S]*)/,"$2");
+	nama = nama.replace(/ ([A-Z])\w+/g,' $1.');
+	return nama;
+}
+
 function parsePengumumanSIM(s) {
 	var div = document.createElement('div');
     div.innerHTML = s;
@@ -20,7 +26,9 @@ function parsePengumumanLab(s) {
 	var beritaLab = html.getElementsByClassName('main');
 	var ganti = beritaLab[0].innerHTML;
 	ganti = ganti.replace(/<br><br>/g, '<br />\n');
-	ganti = ganti.replace(/<img .*\n/g, '');
+	ganti = ganti.replace(/<img class="new" src=".\/images\/icon-new.png">/g, '');
+	console.log(ganti);
+	ganti = ganti.replace(/<img src=".\/images\/banner.jpg"><br \/>/g, '');
 	ganti = ganti.replace(/.*pagging([\s\S]*)/g, '');
 	ganti = ganti.replace(/(.*an">)Ditambahkan Oleh (.*)<\/span>.*/g, '$1$2</span><br />');
 	ganti = ganti.replace(/.*\n.*<a/, '<a');

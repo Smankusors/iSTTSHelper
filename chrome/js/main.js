@@ -1,5 +1,4 @@
 $('#logout').click(function (){
-	console.log("logouut");
 	chrome.storage.local.set({'loggedOn' : false});
 	$.post( "http://sim.stts.edu/logout.php", {},function(){
 		document.location.replace('login.html');
@@ -22,7 +21,6 @@ $("#mNewsSIM").click(function() {
 				var parsed = parsePengumumanSIM(result);
 				$("#content").html(parsed);
 				chrome.storage.local.set({'newsSIM' : parsed});
-				console.log("SIM NEWS updated!");
 				$(".link-pengumuman").click(function(){
 					var pdfLink = this.href;
 					window.open(pdfLink,'_blank');
@@ -47,7 +45,6 @@ $("#mNewsLab").click(function() {
 				var parsed = parsePengumumanLab(result);
 				$("#content").html(parsed);
 				chrome.storage.local.set({'newsLab' : parsed});
-				console.log("Lab NEWS updated!");
 				$("#content").fadeIn(100);
 			}
 		});
@@ -72,7 +69,6 @@ $("#mSched").click(function() {
 						$("#content").append(parseJadwalUjian(jadwal_ujian));
 						$("#content").append(parseJadwalPrakECC(jadwal_prakecc));
 						chrome.storage.local.set({'sched' : $("#content").html()});
-						console.log("SCHED updated!");
 					}
 				});
 			});

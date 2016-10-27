@@ -27,7 +27,6 @@ function parsePengumumanLab(s) {
 	var ganti = beritaLab[0].innerHTML;
 	ganti = ganti.replace(/<br><br>/g, '<br />\n');
 	ganti = ganti.replace(/<img class="new" src=".\/images\/icon-new.png">/g, '');
-	console.log(ganti);
 	ganti = ganti.replace(/<img src=".\/images\/banner.jpg"><br \/>/g, '');
 	ganti = ganti.replace(/.*pagging([\s\S]*)/g, '');
 	ganti = ganti.replace(/(.*an">)Ditambahkan Oleh (.*)<\/span>.*/g, '$1$2</span><br />');
@@ -40,9 +39,7 @@ function parseJadwalKul(s) {
 	var html = s.replace(/,.*<\//g,'</');
 	html = html.replace(/.*sec([\s\S]*)(Jadwal .*) (Sem.*\))([\s\S]*)<\/div>/, '<h3>$3</h3><h4>$2</h4>');
 	html = $(html).find('th:first-child, td:first-child').remove().end();
-	console.log(html);
 	html = $(html).find('th:nth-child(2), td:nth-child(2)').remove().end();
-	console.log(html);
 	return html;
 }
 

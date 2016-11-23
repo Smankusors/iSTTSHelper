@@ -33,7 +33,6 @@ function parsePengumumanLab(s) {
 	ganti = ganti.replace(/.*\n.*<a/, '<a');
 	ganti = ganti.replace(/(<a.*)\n(.*)\n/g, '<div class="piece-left">$1$2</div>');
 	ganti = ganti.replace(/ref="ass/g, 'ref="http://lkomp.stts.edu/ass');
-	console.log(ganti);
 	return ganti;
 }
 

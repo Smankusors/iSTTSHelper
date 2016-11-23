@@ -16,7 +16,7 @@ function parsePengumumanSIM(s) {
 	noscript = noscript.replace(/\n.*<p class="sm"/g, '<p class="sm"');
 	noscript = noscript.replace(/B\n.*<\/a/g, 'B</a');
 	noscript = noscript.replace(/Ditambahkan oleh /g, '');
-	noscript = noscript.replace(/<a href="#"(.*)<a href="(.*pdf)".*<\/a>/g, '<a href="http://sim.stts.edu/$2"$1');
+	noscript = noscript.replace(/<a href="#"(.*)<a href="(.+?)".*<\/a>/g, '<a href="http://sim.stts.edu/$2"$1');
 	return noscript;
 }
 
@@ -32,6 +32,8 @@ function parsePengumumanLab(s) {
 	ganti = ganti.replace(/(.*an">)Ditambahkan Oleh (.*)<\/span>.*/g, '$1$2</span><br />');
 	ganti = ganti.replace(/.*\n.*<a/, '<a');
 	ganti = ganti.replace(/(<a.*)\n(.*)\n/g, '<div class="piece-left">$1$2</div>');
+	ganti = ganti.replace(/ref="ass/g, 'ref="http://lkomp.stts.edu/ass');
+	console.log(ganti);
 	return ganti;
 }
 

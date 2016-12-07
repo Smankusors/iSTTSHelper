@@ -26,5 +26,8 @@ b. Sudah pro, mau memperbaiki sendiri : kamu bisa membuka tab "Pull requests" da
 Jangan lupa baca guide nya dulu! Kalau masih gak mudeng cara pakai GitHub... Uh... OK DEH!  
 Kirim email ke smankusors [at] icloud.com kalau anda masih gaptek GitHub xD  
 \*Kalau ente bisa memperbaiki sendiri, nanti nama ente ane masukkin di About :)  
+**Firefox?**
+Oh... ya... Berhubung aku jarang pakai firefox, bagaimana kalau anda yang buat? :D
+Bisa baca di : https://blog.mozilla.org/addons/2014/06/05/how-to-develop-firefox-extension/
   
 Terima kasih telah berkunjung, wkwkwkwkwk

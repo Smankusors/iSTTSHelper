@@ -1,9 +1,7 @@
 function parseNama(s) {
 	var nama = s.replace(/([\s\S]*)ang, (.*) \<inp.*([\s\S]*)/,"$2");
-	nama = nama.replace(/ ([A-Z])\w+/g,' $1.');
-	return nama;
+	return nama.replace(/ ([A-Z])\w+/g,' $1.');
 }
-
 function parsePengumumanSIM(s) {
 	var div = document.createElement('div');
     div.innerHTML = s;
@@ -19,7 +17,6 @@ function parsePengumumanSIM(s) {
 	noscript = noscript.replace(/<a href="#"(.*)<a href="(.+?)".*<\/a>/g, '<a href="http://sim.stts.edu/$2"$1');
 	return noscript;
 }
-
 function parsePengumumanLab(s) {
 	var html = document.createElement('html');
 	html.innerHTML = s;
@@ -35,7 +32,6 @@ function parsePengumumanLab(s) {
 	ganti = ganti.replace(/ref="ass/g, 'ref="http://lkomp.stts.edu/ass');
 	return ganti;
 }
-
 function parseJadwalKul(s) {
 	var html = s.replace(/,.*<\//g,'</');
 	html = html.replace(/.*sec([\s\S]*)(Jadwal .*) (Sem.*\))([\s\S]*)<\/div>/, '<h3>$3</h3><h4>$2</h4>');

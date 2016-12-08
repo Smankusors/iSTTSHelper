@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "iSTTS Helper",
   "description": "A browser extension to help iSTTS students with the provided information systems.",
-  "version": "0.2.67",
+  "version": "0.3.74",
   "author": "Smankusors (Antony Kurniawan)",
   "homepage_url": "http://sim.stts.edu",
   "icons": {
@@ -22,7 +22,7 @@
       "128" : "img/icon2_128.png",
       "256" : "img/icon2_256.png"
 	},
-    "default_popup": "redir.html"
+    "default_popup": "main.html"
   },
   "content_scripts": [
     {

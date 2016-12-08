@@ -1,10 +1,29 @@
+var loggedOn = false;
+function bacaPengumumanSIM() {
+	$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
+		if ($('#mNewsSIM').attr('class') == "selected") {
+			var parsed = parsePengumumanSIM(result);
+			$("#content").html(parsed);
+			chrome.storage.local.set({'newsSIM' : parsed});
+			$(".link-pengumuman").click(function(){
+				var pdfLink = this.href;
+				window.open(pdfLink,'_blank');
+			});
+		}
+	});
+}
 $('#logout').click(function (){
-	chrome.storage.local.set({'loggedOn' : false});
 	$.post( "http://sim.stts.edu/logout.php", {},function(){
-		document.location.replace('login.html');
+		chrome.storage.local.set({'loggedOn' : false});
+		document.location.replace('main.html');
 	});
 });
-
+$('#login').click(function (){
+	$('body').fadeOut(100);
+	window.setTimeout(function(){
+	document.location.replace('login.html');
+	}, 100);
+});
 $("#mNewsSIM").click(function() {
 	$("#mNewsSIM").toggleClass("selected", true);
 	$("#mNewsLab").toggleClass("selected", false);
@@ -16,17 +35,7 @@ $("#mNewsSIM").click(function() {
 			if (data.newsSIM) $("#content").html(data.newsSIM);
 			$("#content").fadeIn(100);
 		});
-		$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
-			if ($('#mNewsSIM').attr('class') == "selected") {
-				var parsed = parsePengumumanSIM(result);
-				$("#content").html(parsed);
-				chrome.storage.local.set({'newsSIM' : parsed});
-				$(".link-pengumuman").click(function(){
-					var pdfLink = this.href;
-					window.open(pdfLink,'_blank');
-				});
-			}
-		});
+		bacaPengumumanSIM();
 	},100);
 });
 $("#mNewsLab").click(function() {
@@ -57,22 +66,27 @@ $("#mSched").click(function() {
 	$("#mAbout").toggleClass("selected", false);
 	$("#content").fadeOut(100);
 	window.setTimeout(function(){
-		chrome.storage.local.get('sched', function(data) {
-			if (data.sched) $("#content").html(data.sched);
-			$("#content").fadeIn(100);
-		});
-		$.get("http://sim.stts.edu/jadwal_kul.php", function(jadwal_kul) {
-			$.get( "http://sim.stts.edu/jadwal_ujian.php", function(jadwal_ujian){
-				$.get( "http://sim.stts.edu/jadwal_prakecc.php", function(jadwal_prakecc){
-					if ($('#mSched').attr('class') == "selected") {
-						$("#content").html(parseJadwalKul(jadwal_kul));
-						$("#content").append(parseJadwalUjian(jadwal_ujian));
-						$("#content").append(parseJadwalPrakECC(jadwal_prakecc));
-						chrome.storage.local.set({'sched' : $("#content").html()});
-					}
+		if (loggedOn) {
+			chrome.storage.local.get('sched', function(data) {
+				if (data.sched) $("#content").html(data.sched);
+			});
+			$.get("http://sim.stts.edu/jadwal_kul.php", function(jadwal_kul) {
+				$.get( "http://sim.stts.edu/jadwal_ujian.php", function(jadwal_ujian){
+					$.get( "http://sim.stts.edu/jadwal_prakecc.php", function(jadwal_prakecc){
+						if ($('#mSched').attr('class') == "selected") {
+							$("#content").html('<br />');
+							$("#content").append(parseJadwalKul(jadwal_kul));
+							$("#content").append('<br />', parseJadwalUjian(jadwal_ujian));
+							$("#content").append('<br />', parseJadwalPrakECC(jadwal_prakecc));
+							chrome.storage.local.set({'sched' : $("#content").html()});
+						}
+					});
 				});
 			});
-		});
+		} else {
+			$("#content").html('<div class="tengah"><h2>MAAF</h2>Anda harus login dulu sebelum melihat jadwal</div>');
+		}
+		$("#content").fadeIn(100);
 	}, 100);
 });
 $("#mAbout").click(function() {
@@ -89,32 +103,26 @@ $("#mAbout").click(function() {
 		});
 	}, 100);
 });
-
-var userID, password;
-chrome.storage.local.get('news', function(data) {
+chrome.storage.local.get(['newsSIM','loggedOn','user', 'pass', 'nama'], function(data) {
 	if (data.news) $("#content").html(data.news);
-});
-$.get( "http://sim.stts.edu/index.php", function(data){
-	if (data.includes("Selamat Datang,")) {
-		$("#nama").html(parseNama(data));
-		$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
-			var parsed = parsePengumumanSIM(result);
-			$("#content").html(parsed);
-			chrome.storage.local.set({'newsSIM' : parsed});
-			$(".link-pengumuman").click(function(){
-				var pdfLink = this.href;
-				window.open(pdfLink,'_blank');
+	if (data.loggedOn) {
+		$(".login").hide();
+		loggedOn = true;
+		if (data.nama) $("#nama").html(data.nama);
+		else {
+			$.get( "http://sim.stts.edu/index.php", function(result){
+				if (result.includes("Selamat Datang,")) {
+					var nama = parseNama(result);
+					$("#nama").html(nama);
+					chrome.storage.local.set({'nama' : nama});
+				} else {
+					$.post( "http://sim.stts.edu/cek_login.php", { user: data.user, pass: data.pass }, function(result){
+						if (result == "<script>window.location='index.php'</script>") window.location.replace('main.html');
+					});
+				}
 			});
-			chrome.browserAction.setBadgeText({text: ""});
-		});
-	} else {
-		chrome.storage.local.get('user', function(data2) { userID = data2.user; });
-		chrome.storage.local.get('pass', function(data2) {
-			$.get( "http://sim.stts.edu/cek_login.php", { user: userID, pass: data2.pass }, function(result){
-				if (result == "<script>window.location='index.php'</script>") {
-					window.location.replace('main.html');
-				} else window.location.replace('login.html');
-			});
-		});
-	}
+		}
+	} else $(".logout").hide();
+	bacaPengumumanSIM();
+	chrome.browserAction.setBadgeText({text: ""});
 });

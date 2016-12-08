@@ -112,5 +112,10 @@ td, th {
 h2, h3, h4 {
 	text-align: center;
 	width: 100%;
-	margin: 10px;
+	margin: 2px 0 2px 0;
+}
+.tengah {
+	margin-top: 25%;
+	text-align: center;
+	height: 50%;
 }

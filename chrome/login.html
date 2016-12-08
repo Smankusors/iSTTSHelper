@@ -13,11 +13,8 @@
 			border: 1px solid #ccc;
 			box-sizing: border-box;
 			background-color: #ffffff;
+			outline: none;
 			transition: border 0.2s, background-color 0.2s;
-		}
-		.dataText:hover {
-			border: 1px solid #777;
-			background-color: #f7f2f2;
 		}
 		.loginBtn {
 			color: #ffffff;
@@ -28,8 +25,12 @@
 			background-color: #751919;
 			border: 1px solid #777;
 		}
+		.datatext:hover, .datatext:focus {
+			border: 1px solid #660000;
+			background-color: #f7f2f2;
+		}
 	</style>
-</head><body>
+</head><body style="display: none;">
 	<img src="img/login_header.png" /><br /><br />
 	<div class="login-box" id="login-box">
 		<form>
@@ -37,8 +38,8 @@
 			<input id="pass" name="pass" type="password" class="dataText" placeholder="Password">
 			<img src='img/load.gif' width='25px' style="margin-top: 10px; margin-bottom: 12px;"/>
 			<input value="Login" id="login" name="login" type="button" class="loginBtn">
-			
-			<p class="status"></p>
+			<span class="status">&nbsp;</span><br /><hr />
+			Jika ini adalah komputer publik (contohnya komputer eLib), jangan lupa untuk logout sebelum mematikan komputer!
 		</form>
 	</div>
 	<script src="js/login.js"></script>

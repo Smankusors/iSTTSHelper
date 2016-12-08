@@ -3,28 +3,26 @@ chrome.alarms.create("Sman.CheckNews", {
   periodInMinutes: 5
 });
 
-chrome.alarms.onAlarm.addListener(function(alarm) {
-  if (alarm.name === "Sman.CheckNews") {
-	console.log("Cek cek cek!");
-    $.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
-		var parsed = parsePengumumanSIM(result);
-		chrome.storage.local.get('newsSIM', function(data) {
+function doCheckNews() {
+	chrome.storage.local.get(['newsSIM','newsLab'], function(data) {
+		$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
+			var parsed = parsePengumumanSIM(result);
 			if (data.newsSIM != parsed) {
-				console.log("SIM ada yang baru!");
-				chrome.browserAction.setBadgeText({text: "!"});
+				chrome.browserAction.setBadgeBackgroundColor({ color: [102, 0, 0, 255] });
+				chrome.browserAction.setBadgeText({text: "SIM"});
+			} else {
+				$.get("http://lkomp.stts.edu", function(result) {
+					var parsed = parsePengumumanLab(result);
+					if (data.newsLab != parsed) {
+						chrome.browserAction.setBadgeBackgroundColor({ color: [4, 120, 142, 255] });
+						chrome.browserAction.setBadgeText({text: "LAB"});
+					}
+				});
 			}
 		});
 	});
-	$.get("http://lkomp.stts.edu", function(result) {
-		var parsed = parsePengumumanLab(result);
-		chrome.storage.local.get('newsLab', function(data) {
-			if (data.newsLab != parsed) {
-				console.log("Lab ada yang baru!");
-				chrome.browserAction.setBadgeText({text: "!"});
-			}
-		});
-	});
-  }
-});
+}
 
-chrome.browserAction.setBadgeBackgroundColor({ color: [102, 0, 0, 255] });
+chrome.alarms.onAlarm.addListener(function(alarm) {
+	if (alarm.name === "Sman.CheckNews") doCheckNews();
+});

@@ -98,15 +98,15 @@ $("#mAbout").click(function() {
 chrome.storage.local.get(['newsSIM','loggedOn','user', 'pass', 'nama'], function(data) {
 	if (data.news) $("#content").html(data.news);
 	if (data.loggedOn) {
+		loggedOn = true;
 		$(".login").hide();
 		if (data.nama) $("#nama").html(data.nama);
 		$.get( "http://sim.stts.edu/index.php", function(result){
-			if (result.includes("Selamat Datang,")) loggedOn = true;
-			else {
+			if (!result.includes("Selamat Datang,")) {
 				$.post( "http://sim.stts.edu/cek_login.php", { user: data.user, pass: data.pass }, function(result){
-					if (result == "<script>window.location='index.php'</script>") {
-					} else {
+					if (result != "<script>window.location='index.php'</script>") {
 						chrome.storage.local.set({'loggedOn':false});
+						loggedOn = false;
 						$(".logout").hide();
 						$(".login").show();
 					}

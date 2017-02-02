@@ -1,10 +1,16 @@
 # iSTTSHelper
-Adalah sebuah ekstensi browser untuk membantu teman teman iSTTS membuka Sistem Informasi Siswa. :D
+Adalah sebuah ekstensi browser untuk membantu teman teman iSTTS membuka Sistem Informasi Mahasiswa. :D
 
 ## Download
 Chrome : https://chrome.google.com/webstore/detail/istts-helper/jejloeeaabcdgecaoinphjiopnkkjica
 
 Firefox : https://addons.mozilla.org/firefox/addon/istts-helper/
+
+## Cara Install di Microsoft Edge
+Untuk Edge, err... agak ribet soalnya gak punya akses Store ehehehe (^_^")
+
+1. Download source code iSTTSHelper dari GitHub (pencet tombol "Clone or download", kemudian "Download ZIP")
+2. Selanjutnya ikuti instruksi dari [sini](https://developer.microsoft.com/en-us/microsoft-edge/platform/documentation/extensions/guides/adding-and-removing-extensions/) xD
 
 ## Latar belakang
 **Kenapa kamu bikin addon ini?**  
@@ -25,8 +31,9 @@ Oh ya satu lagi, mataku lelah melihat desain jadul website sim.stts.edu... Jadi.
 Pertama, kamu perlu tau, cara menggunakan Git :) 
 Neh aku kasih link guide : https://guides.github.com/activities/contributing-to-open-source/  
 Sebenarnya aku sendiri juga kurang paham cara pakai Git hehehe (^_^")
-*Kalau kamu menemukan sesuatu yang salah dengan addon ini :*
-a. Tidak mengerti cara pakai Git : kamu bisa membuka tab "Issues" dan membuat isu baru disitu :)  
-b. Mengerti cara pakai Git : ya sudah, kamu kan tau caranya, source code kamu edit, terus tinggal request aja :p
+
+**Kalau kamu menemukan sesuatu yang salah dengan addon ini :**
+- Tidak mengerti cara pakai Git : kamu bisa membuka tab "Issues" dan membuat isu baru disitu :)  
+- Mengerti cara pakai Git : ya sudah, kamu kan tau caranya, source code kamu edit, terus tinggal request aja :p
 
 Terima kasih telah berkunjung :)

@@ -1,0 +1,281 @@
+/*HEADER*/
+.banner-logo {
+	background-image: url("http://smankusors.16mb.com/private/sim_logo.png") !important;
+	width: 421px !important;
+}
+.banner-shell, .footer-shell {
+    box-shadow: none !important;
+}
+.menu-outer {
+	height: 100%;
+	padding: 5px;
+}
+.menu-shell {
+	border: none !important;
+	margin-top: 0 !important;
+	height: 40px !important;
+	background-color: #3d0000 !important;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+}
+.banner-shell {
+	box-shadow: none !important;
+}
+.drop {
+	padding: 0px !important;
+	cursor: pointer;
+}
+.child:hover {
+	background-color: #120000 !important;
+}
+.drop-child {
+	border: none !important;
+	background-color: #250000 !important;
+	margin: 0 -120px 0 0 !important;
+}
+.menu {
+	border-collapse: collapse !important;
+	width: 100% !important;
+	text-shadow: none !important;
+	margin-top: -5px;
+}
+.menu td li {
+	cursor: pointer !important;
+	border-left: none !important;
+	border-right: none !important;
+	border-bottom: 2px solid #3d0000;
+	padding-top: 9px !important;
+	padding-bottom: 10px !important;
+	opacity: 0.9;
+	transition: 0.2s background-color, 0.2s border-bottom;
+	height: 19px
+}
+.menu td li:hover {
+	background-color: #250000 !important;
+	border-bottom-color: #250000;
+	opacity: 1;
+}
+.selected {
+	color: #fff !important;
+	opacity: 1 !important;
+	border-bottom-color: #fff !important;
+}
+.menu a {
+	color: #fff !important;
+}
+.child {
+	transition: 0.2s background-color;
+	padding: 5px !important;
+}
+.child td {
+	background-color: inherit !important;
+}
+.banner-navigation-list li {
+	margin: 0 !important;
+}
+.banner-navigation-list li input {
+	margin-top: -5px;
+}
+div.sm {
+	margin-top: -5px;
+}
+/*CONTENT*/
+.body-outer {
+	width: 94% !important;
+	padding-left: 3% !important;
+	padding-right: 3% !important;
+	padding-top: 20px !important;
+	margin: 0 !important;
+}
+.body-shell {
+	padding: 0 !important;
+	min-height: initial !important;
+}
+.body-left {
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+	width: 100% !important;
+}
+.piece-left {
+	width: initial !important;
+}
+.body-left table {
+	width: 100% !important;
+}
+.body-left-container, .body-right {
+	padding: 10px !important;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
+	background-color: #fff !important;
+}
+.body-left-container {
+	margin-right: 20px !important;
+	margin-bottom: 20px !important;
+	width: calc(100% - 420px) !important;
+}
+.body-right {
+	width: 360px !important;
+	margin-bottom: 20px !important;
+}
+p.sm {
+	margin-top: 5px;
+}
+/*MATERIAL HR*/
+.section-name-border {
+	height: 2px !important;
+	border: 0 !important;
+	background-color: #d8d8d8 !important;
+	box-shadow: none !important;
+	margin-bottom: 5px !important;
+}
+/*MATERIAL INPUT*/
+.search-btn, button {
+	font-family: 'Roboto', sans-serif;
+	border: none !important;
+	width: initial !important;
+	height: initial !important;
+	margin-left: 10px !important;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+	background-color: #990000;
+	transition: 0.2s background-color;
+	color: #fff;
+	padding: 10px;
+	text-shadow: none !important;
+}
+button:hover {
+	background-color: #660000;
+}
+input {
+	padding: 10px !important;
+	border-radius: 0 !important;
+	font-size: 14px;
+}
+select {
+	padding: 5px;
+}
+input[type="text"], input[type="password"], textarea {
+	width: 100%;
+}
+input[type="text"], input[type="password"], textarea, select {
+	border: none;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	outline: none;
+	transition: border-bottom-color 0.2s;
+}
+input[type="text"]:hover, input[type="text"]:focus, input[type="password"]:hover, input[type="password"]:focus, textarea:hover, textarea:focus, select:hover, select:focus {
+	border-bottom-color: #660000;
+}
+/*MATERIAL TABLE*/
+table.table {
+	border: none !important;
+}
+.table th, .table td {
+	display: table-cell !important;
+	border: none !important;
+}
+.table th, .table td {
+	border-bottom: 1px solid #e0e0e0 !important;
+	padding: 5px !important;
+}
+.table th, .table tr {
+	background-color: transparent !important;
+	transition: 0.2s background-color;
+}
+.table tr:hover {
+	background-color: #EEEEEE !important;
+}
+.b {
+	color: #000 !important;
+}
+/*THEME FOOTER*/
+.footer-shell {
+	background-color: #660000 !important;
+}
+.theme-footer {
+	font-size: 12px;
+	text-align: center;
+	background-color: #3d0000;
+	padding: 10px;
+	color: #fff;
+}
+/*MATERIAL LOGIN*/
+.login-box {
+	background-color: #fff !important;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23) !important;
+	border: none !important;
+	border-radius: 0 !important;
+	height: initial !important;
+	padding: 10px !important;
+}
+.login-box #login {
+	margin-top: 5px;
+	width: 100% !important;
+}
+p.status {
+	margin-top: 10px;
+	text-align: center;
+	width: 100%;
+}
+/*MATERIAL SEARCH BOX*/
+.search-mat-fab-btn {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	padding: 20px;
+	background-color: #990000;
+	border-radius: 50px;
+	display: block;
+	cursor: pointer;
+	transition: 0.2s background-color;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+	z-index: 9;
+}
+.search-mat-fab-btn:hover {
+	background-color: #660000;
+}
+#search-mat-box {
+	font-family: 'Roboto', sans-serif;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #fff;
+	padding: 20px;
+	width: 350px;
+	height: 120px;
+	box-shadow: 0 -2px 25px 0 rgba(0, 0, 0, 0.15), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+	z-index: 10;
+}
+.submit-mat-btn {
+	margin-top: 12px;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	font-family: 'Roboto', sans-serif;
+	color: #990000;
+	font-weight: 500;
+	transition: 0.2s background-color;
+}
+.submit-mat-btn:hover {
+	background-color: #e0e0e0;
+}
+.action-bar-mat {
+	text-align: right;
+}
+.dialog-title {
+	width: 100%;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+#dark_bg {
+	background-color: #000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+}

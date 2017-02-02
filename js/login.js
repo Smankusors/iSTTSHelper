@@ -20,7 +20,7 @@ function doLogin() {
 			});
 		} else {
 			$('#login').fadeTo(200, 1);
-			$(".datatext").css("border", "1px solid #f00");
+			$(".datatext").css("border-bottom", "1px solid #f00");
 			$(".status").html(result);
 		}
 	});

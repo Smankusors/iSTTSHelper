@@ -1,4 +1,4 @@
-var loggedOn = false;
+var loggedOn = false, disableMat = false;
 function bacaPengumumanSIM() {
 	$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
 		if ($('#mNewsSIM').attr('class') == "selected") {
@@ -28,9 +28,12 @@ $("#mNewsSIM").click(function() {
 	$("#mAbout").toggleClass("selected", false);
 	$("#content").fadeOut(100);
 	window.setTimeout(function(){
+		$("#content").html("");
 		chrome.storage.local.get('newsSIM', function(data) {
-			if (data.newsSIM) $("#content").html(data.newsSIM);
-			$("#content").fadeIn(100);
+			if (data.newsSIM) {
+				$("#content").html(data.newsSIM);
+				$("#content").fadeIn(100);
+			}
 		});
 		bacaPengumumanSIM();
 	},100);
@@ -42,9 +45,12 @@ $("#mNewsLab").click(function() {
 	$("#mAbout").toggleClass("selected", false);
 	$("#content").fadeOut(100);
 	window.setTimeout(function(){
+		$("#content").html("");
 		chrome.storage.local.get('newsLab', function(data) {
-			if (data.newsLab) $("#content").html(data.newsLab);
-			$("#content").fadeIn(100);
+			if (data.newsLab) {
+				$("#content").html(data.newsLab);
+				$("#content").fadeIn(100);
+			}
 		});
 		$.get("http://lkomp.stts.edu", function(result) {
 			if ($('#mNewsLab').attr('class') == "selected") {
@@ -63,9 +69,13 @@ $("#mSched").click(function() {
 	$("#mAbout").toggleClass("selected", false);
 	$("#content").fadeOut(100);
 	window.setTimeout(function(){
+		$("#content").html("");
 		if (loggedOn) {
 			chrome.storage.local.get('sched', function(data) {
-				if (data.sched) $("#content").html(data.sched);
+				if (data.sched) {
+					$("#content").html(data.sched);
+					$("#content").fadeIn(100);
+				}
 			});
 			$.get("http://sim.stts.edu/jadwal_kul.php", function(kul) {
 				$.get("http://sim.stts.edu/jadwal_ujian.php", function(ujian){
@@ -73,13 +83,16 @@ $("#mSched").click(function() {
 						if ($('#mSched').attr('class') == "selected") {
 							var hasil = parseJadwal(kul, ujian, prakecc);
 							$("#content").html(hasil);
+							$("#content").fadeIn(100);
 							chrome.storage.local.set({'sched' : hasil});
 						}
 					});
 				});
 			});
-		} else $("#content").html('<div class="tengah"><h2>MAAF</h2>Anda harus login dulu sebelum melihat jadwal</div>');
-		$("#content").fadeIn(100);
+		} else {
+			$("#content").html('<div class="tengah"><h2>MAAF</h2>Anda harus login dulu sebelum melihat jadwal</div>');
+			$("#content").fadeIn(100);
+		}
 	}, 100);
 });
 $("#mAbout").click(function() {
@@ -91,12 +104,19 @@ $("#mAbout").click(function() {
 	window.setTimeout(function(){
 		$("#content").load("about.html", function() {
 			$("#version").html(chrome.runtime.getManifest().version);
+			$("#disableMat")[0].checked = disableMat;
 			$("#content").fadeIn(100);
+			$("#disableMat").click(function (){
+				disableMat = $("#disableMat").is(":checked");
+				chrome.storage.local.set({'disableMat' : disableMat});
+				console.log(disableMat);
+			});
 		});
 	}, 100);
 });
-chrome.storage.local.get(['newsSIM','loggedOn','user', 'pass', 'nama'], function(data) {
-	if (data.news) $("#content").html(data.news);
+chrome.storage.local.get(['newsSIM','loggedOn','user', 'pass', 'nama', 'disableMat'], function(data) {
+	disableMat = data.disableMat;
+	if (data.newsSIM) $("#content").html(data.newsSIM);
 	if (data.loggedOn) {
 		loggedOn = true;
 		$(".login").hide();

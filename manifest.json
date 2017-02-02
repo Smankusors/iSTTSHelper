@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "iSTTS Helper",
   "description": "A browser extension to help iSTTS students with the provided information systems.",
-  "version": "0.3.77",
+  "version": "0.5.94",
   "author": "Smankusors (Antony Kurniawan)",
   "homepage_url": "http://sim.stts.edu",
   "icons": {
@@ -24,12 +24,10 @@
 	},
     "default_popup": "main.html"
   },
-  "content_scripts": [
-    {
-      "matches": ["http://sim.stts.edu/index.php","http://sim.stts.edu/"],
+  "content_scripts": [{
+      "matches": ["http://sim.stts.edu/index.*","http://sim.stts.edu/"],
       "js": ["js/jquery.js","js/checkLogin.js"]
-    }
-  ],
+  }],
   "background": {
     "scripts": ["js/jquery.js","js/parser.js","js/checkNews.js"],
 	"persistent": false
@@ -40,5 +38,14 @@
 	"alarms",
 	"http://sim.stts.edu/",
 	"http://lkomp.stts.edu/"
-  ]
+  ],
+  "web_accessible_resources": [
+	"css/materialize.css",
+	"js/materialize.js"
+  ],
+  "applications": {
+    "gecko": {
+	  "id": "{bd4515c2-1fb2-41c9-b2bf-fc650b814b81}"
+    }
+  }
 }

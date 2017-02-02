@@ -1,0 +1,132 @@
+html, body {
+	width: 600px;
+	min-height: 500px;
+	margin: 0;
+	font-family: 'Segoe UI', sans-serif;
+}
+.header {
+	background-color: #660000;
+	color: #ffffff;
+	padding: 10px;
+}
+.header a {
+	color: #ffffff;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: 0.2s border-bottom-color;
+}
+.header a:hover {
+	border-bottom-color: #fff;
+}
+.header .title {
+	font-size: 16px;
+	font-family: 'Segoe UI', sans-serif;
+}
+.header .right-title {
+	margin-top: -14px;
+	text-align: right;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 12px;
+}
+#content {
+	padding: 0 10px 10px 10px;
+	font-size: 14px;
+	overflow-y: auto;
+	max-height: 500px;
+}
+#content a {
+	color: #996600;
+	text-decoration: none;
+}
+#content a:hover {
+	color: #261a00;
+}
+#content p {
+	margin: 0;
+}
+.piece-left {
+	width: 100%;
+	margin-top: 10px;
+	border-bottom-style: solid;
+	border-width: 2px;
+	border-color: #ededed;
+	padding-bottom: 10px;
+}
+.menu {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	font-size: 14px;
+	background-color: #3d0000;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+}
+.menu td {
+	padding: 5px;
+	color: #fff;
+	border-bottom: 2px solid #3d0000;
+	opacity: 0.9;
+	transition: background-color 0.2s, border-bottom 0.2s;
+}
+.menu td:hover {
+	cursor: pointer;
+	color: #fff;
+	opacity: 1;
+	background-color: #250000;
+}
+.menu td:hover:not(.selected) {
+	border-bottom-color: #250000;
+}
+.menu .selected {
+	color: #fff;
+	opacity: 1;
+	border-bottom-color: #fff;
+}
+th {
+	font-weight: bold;
+	text-align: -internal-center;
+}
+td, th {
+	display: table-cell;
+	vertical-align: inherit;
+}
+h2, h3, h4 {
+	text-align: center;
+	width: 100%;
+	margin: 5px;
+}
+.tengah {
+	margin-top: 25%;
+	text-align: center;
+	height: 50%;
+}
+hr {
+	height: 2px;
+	border: none;
+    background-color: #d8d8d8;
+    margin-bottom: 5px;
+}
+table.table {
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+	font-size: 13px;
+}
+.table th, .table td {
+	display: table-cell;
+	white-space: nowrap;
+	border: none;
+}
+.table th, .table td {
+	border-bottom: 1px solid #e0e0e0;
+	padding: 5px;
+}
+.table th, .table tr {
+	background-color: transparent;
+	transition: 0.2s background-color;
+}
+.table tr:hover {
+	background-color: #EEEEEE;
+}
+.ce {
+	text-align: center;
+}

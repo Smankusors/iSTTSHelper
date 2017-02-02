@@ -1,0 +1,69 @@
+html {
+	height: auto;
+	width: auto;
+}
+body {
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 12px;
+	width: 300px;
+}
+#login-box {
+	margin-top: -10px;
+	text-align: center;
+}
+input {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0;
+	display: inline-block;
+	border:none;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	outline: none;
+	transition: border 0.2s;
+}
+.loginBtn {
+	position: relative;
+	z-index: 2;
+	color: #ffffff;
+	background-color: #660000;
+	margin-top: -35px;
+	transition: 0.2s background-color;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+	border: none;
+	float: left;
+}
+.loginBtn:hover {
+	background-color: #a30000;
+}
+.dataText:hover, .dataText:focus {
+	border-bottom: 1px solid #660000;
+}
+/* https://thomas.vanhoutte.be/miniblog/android-lollipop-animated-loading-gif/ */
+.spinner {
+	margin-top: 10px;
+	animation: rotator 1.5s linear infinite;
+}
+@keyframes rotator {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(270deg); }
+}
+.path {
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	transform-origin: center;
+	stroke: #660000;
+	animation: dash 1.5s ease-in-out infinite
+}
+@keyframes dash {
+	0% { stroke-dashoffset: 187; }
+	50% {
+		stroke-dashoffset: 46.75;
+		transform:rotate(135deg);
+	}
+	100% {
+		stroke-dashoffset: 187;
+		transform:rotate(450deg);
+	}
+}

@@ -6,11 +6,8 @@ Chrome : https://chrome.google.com/webstore/detail/istts-helper/jejloeeaabcdgeca
 
 Firefox : https://addons.mozilla.org/firefox/addon/istts-helper/
 
-## Cara Install di Microsoft Edge
-Untuk Edge, err... agak ribet soalnya gak punya akses Store ehehehe (^_^")
+Edge : https://github.com/Smankusors/iSTTSHelper_EdgeInstaller/releases/
 
-1. Download source code iSTTSHelper dari GitHub (pencet tombol "Clone or download", kemudian "Download ZIP")
-2. Selanjutnya ikuti instruksi dari [sini](https://developer.microsoft.com/en-us/microsoft-edge/platform/documentation/extensions/guides/adding-and-removing-extensions/) xD
 
 ## Latar belakang
 **Kenapa kamu bikin addon ini?**  

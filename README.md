@@ -4,7 +4,7 @@ Adalah sebuah ekstensi browser untuk membantu teman teman iSTTS membuka Sistem I
 ## Download
 Chrome : https://chrome.google.com/webstore/detail/istts-helper/jejloeeaabcdgecaoinphjiopnkkjica
 
-Firefox : https://addons.mozilla.org/firefox/addon/istts-helper/
+Firefox : https://github.com/Smankusors/iSTTSHelper/releases
 
 Edge : https://github.com/Smankusors/iSTTSHelper_EdgeInstaller/releases/
 

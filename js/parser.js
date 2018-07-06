@@ -4,7 +4,7 @@ function parseNama(s) {
 }
 function parsePengumumanSIM(s) {
 	s = s.replace(/\/p>\r\n/g, '/p>').replace(/B\r\n.*<\/a/g, 'B</a');
-	s = s.replace(/<a href="#"(.*)<a href="(.+?)".*<\/a>/g, '<a href="http://sim.stts.edu/$2"$1');
+	s = s.replace(/<a href="#"(.*)<a href="(.+?)".*<\/a>/g, '<a href="https://old.sim.stts.edu/$2"$1');
 	return s.replace(/Ditambahkan oleh /g, '');
 }
 function parsePengumumanLab(s) {

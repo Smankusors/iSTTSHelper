@@ -1,6 +1,6 @@
 var loggedOn = false, disableMat = false;
 function bacaPengumumanSIM() {
-	$.get("http://sim.stts.edu/pengumuman_data.php", function(result) {
+	$.get("https://old.sim.stts.edu/pengumuman_data.php", function(result) {
 		if ($('#mNewsSIM').attr('class') == "selected") {
 			var parsed = parsePengumumanSIM(result);
 			$("#content").html(parsed);
@@ -10,7 +10,7 @@ function bacaPengumumanSIM() {
 	});
 }
 $('#logout').click(function (){
-	$.post("http://sim.stts.edu/logout.php",{},function(){
+	$.post("https://old.sim.stts.edu/logout.php",{},function(){
 		loggedOn = false;
 		chrome.storage.local.set({'loggedOn':false});
 		$(".logout").hide();
@@ -77,9 +77,9 @@ $("#mSched").click(function() {
 					$("#content").fadeIn(100);
 				}
 			});
-			$.get("http://sim.stts.edu/jadwal_kul.php", function(kul) {
-				$.get("http://sim.stts.edu/jadwal_ujian.php", function(ujian){
-					$.get("http://sim.stts.edu/jadwal_prakecc.php", function(prakecc){
+			$.get("https://old.sim.stts.edu/jadwal_kul.php", function(kul) {
+				$.get("https://old.sim.stts.edu/jadwal_ujian.php", function(ujian){
+					$.get("https://old.sim.stts.edu/jadwal_prakecc.php", function(prakecc){
 						if ($('#mSched').attr('class') == "selected") {
 							var hasil = parseJadwal(kul, ujian, prakecc);
 							$("#content").html(hasil);
@@ -121,9 +121,9 @@ chrome.storage.local.get(['newsSIM','loggedOn','user', 'pass', 'nama', 'disableM
 		loggedOn = true;
 		$(".login").hide();
 		if (data.nama) $("#nama").html(data.nama);
-		$.get( "http://sim.stts.edu/index.php", function(result){
+		$.get( "https://old.sim.stts.edu/index.php", function(result){
 			if (!result.includes("Selamat Datang,")) {
-				$.post( "http://sim.stts.edu/cek_login.php", { user: data.user, pass: data.pass }, function(result){
+				$.post( "https://old.sim.stts.edu/cek_login.php", { user: data.user, pass: data.pass }, function(result){
 					if (result != "<script>window.location='index.php'</script>") {
 						chrome.storage.local.set({'loggedOn':false});
 						loggedOn = false;

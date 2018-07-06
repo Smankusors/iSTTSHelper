@@ -10,9 +10,9 @@ function doLogin() {
 	var userID = $('#user').val();
 	var userPass = $("#pass").val();
 	$('#login').fadeTo(200, 0);
-	$.post("http://sim.stts.edu/cek_login.php",{user:userID,pass:userPass},function(result){
+	$.post("https://old.sim.stts.edu/cek_login.php",{user:userID,pass:userPass},function(result){
 		if (result == "<script>window.location='index.php'</script>") {
-			$.get("http://sim.stts.edu/index.php", function(carinama){
+			$.get("https://old.sim.stts.edu/index.php", function(carinama){
 				var nama = parseNama(carinama);
 				chrome.storage.local.set({'user':userID,'pass':userPass,'loggedOn':true,'nama':nama});
 				$('html').fadeOut(100);

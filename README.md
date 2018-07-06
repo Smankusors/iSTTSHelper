@@ -1,5 +1,6 @@
 # iSTTSHelper
 Adalah sebuah ekstensi browser untuk membantu teman teman iSTTS membuka Sistem Informasi Mahasiswa. :D
+**CATATAN**: ekstensi ini sudah tidak dikembangkan lebih lanjut lagi. Fitur SIM yang baru akan mempunyai fitur notifikasi.
 
 ## Download
 Chrome : https://chrome.google.com/webstore/detail/istts-helper/jejloeeaabcdgecaoinphjiopnkkjica
